@@ -23,10 +23,10 @@ public class GhosBehaviourTree : MonoBehaviour
         var mainPatrollingSelector = new AcrossSelector("Patrolling Logic");
 
         var targetDetectionSequence = new SequenceNode("Detecting Player");
-        targetDetectionSequence.AddNode(new Leaf("Player Is in Sight", new TellSomethingStrategy("Detecting...")));
+        //targetDetectionSequence.AddNode(new Leaf("Player Is in Sight", new TellSomethingStrategy("Detecting...")));
         targetDetectionSequence.AddNode(new Leaf("Has enough stamina", new Condition(() => _stamina > 8)));
         targetDetectionSequence.AddNode(new Leaf("Player Is in Sight", new DetectTargetStrategy(_targetDetector)));
-        targetDetectionSequence.AddNode(new Leaf("Player Is in Sight", new TellSomethingStrategy("Detected")));
+        //targetDetectionSequence.AddNode(new Leaf("Player Is in Sight", new TellSomethingStrategy("Detected")));
         targetDetectionSequence.AddNode(new Leaf("React To Sight", new ActionStrategy(() => 
         { 
             _ghost.StopPatrolling();
@@ -41,7 +41,7 @@ public class GhosBehaviourTree : MonoBehaviour
             _stamina = Mathf.Min(_stamina, 10);
         })));
         patrollingSequence.AddNode(new Leaf("Patrolling Waypoints", new EntityPatrolStrategy(_ghost)));
-        patrollingSequence.AddNode(new Leaf("Patrolling End", new TellSomethingStrategy("Finish patrol")));
+        //patrollingSequence.AddNode(new Leaf("Patrolling End", new TellSomethingStrategy("Finish patrol")));
 
         var chasingNode = new AcrossSequenceNode("Chasing");
         chasingNode.AddNode(new Leaf("Player Is in Sight", new ActionStrategy(()=> {
