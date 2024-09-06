@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/UnityTechnologies/3DBeginnerComplete/Scenes/Boostrap.unity
+    guid: b405fe3f38bdf24449ecc82714b4d471
+  - enabled: 1
     path: Assets/UnityTechnologies/3DBeginnerComplete/Scenes/MainScene.unity
     guid: 139fe7247bf905647981ad2d31d0f39e
+  - enabled: 1
+    path: Assets/UnityTechnologies/3DBeginnerComplete/Scenes/UI.unity
+    guid: 9ad3af5a5e358844d8f066b8e9cc75a4
+  - enabled: 1
+    path: Assets/UnityTechnologies/3DBeginnerComplete/Scenes/Audio.unity
+    guid: 3ea16f6db659aa944905dc589858efc8
   m_configObjects: {}

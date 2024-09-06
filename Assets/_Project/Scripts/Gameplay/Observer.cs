@@ -2,7 +2,7 @@
 
 public class Observer : MonoBehaviour, ITargetDetector
 {
-    public Transform player;
+    private Transform player;
     public GameEnding gameEnding;
 
     bool m_IsPlayerInRange;
@@ -48,17 +48,19 @@ public class Observer : MonoBehaviour, ITargetDetector
 
     void OnTriggerEnter (Collider other)
     {
-        if (other.transform == player)
+        if (other.transform.gameObject.layer == 7)
         {
             m_IsPlayerInRange = true;
+            player = other.transform;
         }
     }
 
     void OnTriggerExit (Collider other)
     {
-        if (other.transform == player)
+        if (other.transform.gameObject.layer == 7)
         {
             m_IsPlayerInRange = false;
+            player = null;
         }
     }
 

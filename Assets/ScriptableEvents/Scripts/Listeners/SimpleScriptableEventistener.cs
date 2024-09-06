@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class SimpleScriptableEventistener : MonoBehaviour
 {
+    public string description;
     public UnityEvent m_event;
     public SimpleScriptableEvent m_listener;
 
