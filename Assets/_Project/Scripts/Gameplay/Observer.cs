@@ -1,6 +1,4 @@
-﻿
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Observer : MonoBehaviour, ITargetDetector
 {
@@ -17,6 +15,11 @@ public class Observer : MonoBehaviour, ITargetDetector
         return _playerIsDetected;
     }
 
+    private void Update()
+    {
+        UpdateDetection(Time.deltaTime);
+    }
+
     public void UpdateDetection(float deltaTime)
     {
         if (m_IsPlayerInRange)
@@ -25,7 +28,16 @@ public class Observer : MonoBehaviour, ITargetDetector
             Ray ray = new Ray(transform.position, direction);
             RaycastHit raycastHit;
 
-            if (Physics.Raycast(ray, out raycastHit)) _playerIsDetected = raycastHit.collider.transform == player;
+            if (Physics.Raycast(ray, out raycastHit))
+            {
+                if(raycastHit.collider.transform == player)
+                {
+                    GameEventManager.InvokeOnPlayerDetection(player.position);
+                    _playerIsDetected = raycastHit.collider.transform == player;
+                }
+                
+            }
+            
         }
         else
         {
